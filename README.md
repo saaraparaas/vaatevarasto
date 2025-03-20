@@ -1,6 +1,9 @@
 # Lastenvaatteiden varasto
 
+Tehty:
 - Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
+
+Tulossa:
 - Käyttäjä pystyy lisäämään, muokkaamaan ja poistamaan vaatetietoa. 
 - Käyttäjä näkee sovellukseen lisätyt vaatetiedot.
 - Käyttäjä pystyy etsimään vaatetietoa hakusanalla.
