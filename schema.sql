@@ -4,3 +4,12 @@ CREATE TABLE users (
     password_hash TEXT
 );
 
+CREATE TABLE items (
+    id INEEGER PRIMARY KEY,
+    title TEXT,
+    size INTEGER,
+    color TEXT,
+    description TEXT,
+    user_id INTEGER REFERENCES users
+);
+
