@@ -5,7 +5,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE items (
-    id INEEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     title TEXT,
     size INTEGER,
     color TEXT,
