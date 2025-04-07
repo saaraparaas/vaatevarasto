@@ -2,7 +2,7 @@
 
 Tehty:
 - Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
-- Käyttäjä pystyy lisäämään vaatetietoa (mutta ongelmana lisättyjen vaatetietojen id näyttää olevan "None" eli vaatetietosivua ei saa auki -> vinkit tervetulleita!).
+- Käyttäjä pystyy lisäämään vaatetietoa.
 
 Tulossa:
 - Käyttäjä pystyy muokkaamaan ja poistamaan vaatetietoa.

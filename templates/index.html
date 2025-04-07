@@ -27,7 +27,7 @@
 
   <ul>
     {% for item in items %}
-    <li><a href="/item/{{  item.id  }}">{{ item.title }}</a></li>
+    <li><a href="/item/{{  item.id  }}">{{ item.title }} {{ item.size }}</a></li>
     {% endfor %}
   </ul>
 
