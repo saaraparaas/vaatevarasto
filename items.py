@@ -4,7 +4,6 @@ def add_item(title, size, color, description, user_id):
     sql = """INSERT INTO items (title, size, color, description, user_id)
              VALUES (?, ?, ?, ?, ?)"""
     db.execute(sql, [title, size, color, description, user_id])
-    db.commit()
 
 def get_items():
     sql = "SELECT id, title FROM items ORDER BY id DESC"
