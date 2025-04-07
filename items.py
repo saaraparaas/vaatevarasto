@@ -22,3 +22,11 @@ def get_item(item_id):
                     items.id = ?"""
     result = db.query(sql, [item_id])
     return result[0] if result else None
+
+def update_item(item_id, title, size, color, description):
+    sql = """UPDATE items SET title = ?,
+                                size = ?,
+                                color = ?,
+                                description = ?
+                            WHERE id = ?"""
+    db.execute(sql, [title, size, color, description, item_id])

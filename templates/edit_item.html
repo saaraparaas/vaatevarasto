@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Vaatetiedon muokkaus</title>
+</head>
+
+<body>
+  <h1>Vaatetiedon muokkaus</h1>
+  <form action="/update_item" method="post">
+    <p>
+        Vaate: <br />
+        <input type="text" name="title" value="{{ item.title }}"/>
+    </p>
+    <p>
+        Koko: <br />
+        <input type="text" name="size" size="8" value="{{ item.size }}"/> cm
+    </p>
+    <p>
+        Väri: <br />
+        <input type="text" name="color" value="{{ item.color }}"/>
+    </p>
+    <p>
+        Kuvaus: <br />
+        <textarea name="description" rows="4" cols="60">{{ item.description }}</textarea>
+    </p>
+    <input type="hidden" name="item_id" value="{{ item.id }}" />
+    <input type="submit" value="Päivitä ilmoitus" />
+  </form>
+</body>
+
+</html>
