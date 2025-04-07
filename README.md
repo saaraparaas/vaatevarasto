@@ -15,14 +15,11 @@ Tulossa:
 # Sovelluksen asennus
 
 Asenna flask-kirjasto:
-
-$ pip install flask
+- $ pip install flask
 
 Luo tietokannan taulut ja lisää alkutiedot:
+- $ sqlite3 database.db < schema.sql
+- $ sqlite3 database.db < init.sql
 
-$ sqlite3 database.db < schema.sql
-$ sqlite3 database.db < init.sql
-
-Käynnistä sovellus näin:
-
-$ flask run
+Käynnistä sovellus:
+- $ flask run
