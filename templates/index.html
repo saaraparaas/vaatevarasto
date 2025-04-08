@@ -11,20 +11,26 @@
   <p>
     Olet kirjautunut nimellä {{ session.username }} ja id-numerosi on {{ session.user_id }}
   </p>
-  {% endif %}
-
   <p>
-    <a href="/login">Kirjaudu sisään</a>
-    <a href="/register">Luo tunnus</a>
+    <a href="/new_item">Lisää uusi vaatetieto</a>
+  </p>
+  <p>
     <a href="/logout">Kirjaudu ulos</a>
   </p>
+  {% else %}
+  <p>
+    <a href="/login">Kirjaudu sisään</a>
+  </p>
+  <p>
+    <a href="/register">Luo tunnus</a>
+  </p>
+  {% endif %}
+
+  <h2>Varastossa olevat vaatteet</h2>
 
   <p>
-    <a href="/new_item">Uusi vaate</a>
     <a href="/find_item">Etsi vaate</a>
   </p>
-
-  <h2>Lisätyt vaatteet</h2>
 
   <ul>
     {% for item in items %}
