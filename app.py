@@ -83,9 +83,17 @@ def update_item():
         abort(403)
 
     title = request.form["title"]
+    if not title or len(title) > 60:
+        abort(403)
     size = request.form["size"]
+    if not size or len(size) > 50:
+        abort(403)
     color = request.form["color"]
+    if not color or len(color) > 100:
+        abort(403)
     description = request.form["description"]
+    if not description or len(description) > 1000:
+        abort(403)
 
     items.update_item(item_id, title, size, color, description)
 

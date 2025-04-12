@@ -10,19 +10,19 @@
   <form action="/update_item" method="post">
     <p>
         Vaate: <br />
-        <input type="text" name="title" value="{{ item.title }}"/>
+        <input type="text" name="title" value="{{ item.title }}" maxlength="60" required />
     </p>
     <p>
         Koko: <br />
-        <input type="text" name="size" size="8" value="{{ item.size }}"/> cm
+        <input type="text" name="size" size="8" value="{{ item.size }}" maxlength="50" required /> cm
     </p>
     <p>
         Väri: <br />
-        <input type="text" name="color" value="{{ item.color }}"/>
+        <input type="text" name="color" value="{{ item.color }}" maxlength="100" required/>
     </p>
     <p>
         Kuvaus: <br />
-        <textarea name="description" rows="4" cols="60">{{ item.description }}</textarea>
+        <textarea name="description" rows="4" cols="60" maxlength="1000" required>{{ item.description }}</textarea>
     </p>
     <input type="hidden" name="item_id" value="{{ item.id }}" />
     <input type="submit" value="Päivitä ilmoitus" />
