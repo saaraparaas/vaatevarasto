@@ -14,16 +14,22 @@
     </p>
     {% endif %}
     <p>
-      koko: {{ item.size }} cm
+      Koko: {{ item.size }} cm
     </p>
     <p>
-      väri: {{ item.color }}
+      Väri: {{ item.color }}
     </p>
     <p>
-      kuvaus: {{ item.description }}
+      Kuvaus: {{ item.description }}
     </p>
     <p>
-      lisännyt: <a href="/user/{{ item.user_id }}">{{ item.username }}</a>
+      <u1>
+        {% for class in classes %}
+        <li> {{ class.title }}: {{ class.value }}</li>
+        {% endfor %}
+    </p>
+    <p>
+      Lisännyt: <a href="/user/{{ item.user_id }}">{{ item.username }}</a>
     </p>
     <p>
       <a href="/">Takaisin etusivulle</a>

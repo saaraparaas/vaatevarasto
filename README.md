@@ -5,10 +5,10 @@
 - Käyttäjä näkee sovellukseen lisätyt vaatetiedot.
 - Käyttäjä pystyy etsimään vaatetietoa hakusanalla.
 - Sovelluksessa on käyttäjäsivut, jotka näyttävät käyttäjän lisäämät vaatetiedot.
+- Käyttäjä pystyy valitsemaan vaatetiedolle kaksi eri luokittelua (minkä kauden vaate ja vaatteen kunto).
 
 Tulossa:
 - Sovelluksen käyttäjäsivut näyttävät tilastoja.
-- Käyttäjä pystyy valitsemaan vaatetiedolle yhden tai useamman luokittelun (esimerkiksi talvivaatteet/vk-vaatteet/kesävaatteet, kokoluokka, kunto).
 - Käyttäjä pystyy lisäämään kommentin vaatetietoon.
 
 # Sovelluksen asennus
