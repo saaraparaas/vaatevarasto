@@ -1,4 +1,5 @@
 # Lastenvaatteiden varasto
+Tämän sovelluksen avulla voi helposti seurata, mitä lasten ulkovaatteita on käytettävissä esimerkiksi sisarukselta toiselle. Sovellus toimii varastokirjanpitäjänä.
 
 - Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 - Käyttäjä pystyy lisäämään, muokkaamaan ja poistamaan vaatetietoa.
