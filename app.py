@@ -47,7 +47,8 @@ def show_item(item_id):
 @app.route("/new_item")
 def new_item():
     require_login()
-    return render_template("new_item.html")
+    classes = items.get_all_classes()
+    return render_template("new_item.html", classes=classes)
 
 @app.route("/create_item", methods=["POST"])
 def create_item():
@@ -67,13 +68,17 @@ def create_item():
         abort(403)
     user_id = session["user_id"]
 
+    all_classes = items.get_all_classes()
+
     classes = []
-    season = request.form["season"]
-    if season:
-        classes.append(("Kausi", season))
-    condition = request.form["condition"]
-    if condition:
-        classes.append(("Kunto", condition))
+    for entry in request.form.getlist("classes"):
+        if entry:
+            class_title, class_value = entry.split(":")
+            if class_title not in all_classes:
+                abort(403)
+            if class_value not in all_classes[class_title]:
+                abort(403)
+            classes.append((class_title, class_value))
 
     items.add_item(title, size, color, description, user_id, classes)
 
