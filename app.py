@@ -2,7 +2,6 @@ import sqlite3
 from flask import Flask
 from flask import abort, redirect, render_template, request, session
 import config
-import db
 import items
 import users
 
@@ -92,11 +91,20 @@ def edit_item(item_id):
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
-    return render_template("edit_item.html", item=item)
+
+    all_classes = items.get_all_classes()
+    classes = {}
+    for my_class in all_classes:
+        classes[my_class] = ""
+    for entry in items.get_classes(item_id):
+        classes[entry["title"]] = entry["value"]
+
+    return render_template("edit_item.html", item=item, classes=classes, all_classes=all_classes)
 
 @app.route("/update_item", methods=["POST"])
 def update_item():
     require_login()
+
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
     if not item:
@@ -117,7 +125,19 @@ def update_item():
     if not description or len(description) > 1000:
         abort(403)
 
-    items.update_item(item_id, title, size, color, description)
+    all_classes = items.get_all_classes()
+
+    classes = []
+    for entry in request.form.getlist("classes"):
+        if entry:
+            class_title, class_value = entry.split(":")
+            if class_title not in all_classes:
+                abort(403)
+            if class_value not in all_classes[class_title]:
+                abort(403)
+            classes.append((class_title, class_value))
+
+    items.update_item(item_id, title, size, color, description, classes)
 
     return redirect("/item/" + str(item_id))
 
