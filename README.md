@@ -7,10 +7,10 @@ Tämän sovelluksen avulla voi helposti seurata, mitä lasten ulkovaatteita on k
 - Käyttäjä pystyy etsimään vaatetietoa hakusanalla.
 - Sovelluksessa on käyttäjäsivut, jotka näyttävät käyttäjän lisäämät vaatetiedot.
 - Käyttäjä pystyy valitsemaan vaatetiedolle kaksi eri luokittelua (minkä kauden vaate ja vaatteen kunto).
+- Käyttäjä pystyy lisäämään kommentin vaatetietoon.
 
 Tulossa:
 - Sovelluksen käyttäjäsivut näyttävät tilastoja.
-- Käyttäjä pystyy lisäämään kommentin vaatetietoon.
 
 # Sovelluksen asennus
 
