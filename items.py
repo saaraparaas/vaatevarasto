@@ -67,15 +67,21 @@ def remove_item(item_id):
     db.execute(sql, [item_id])
 
 def find_items(query):
-    sql = """ SELECT id, title
-                FROM items
-                WHERE title LIKE ?
-                    OR description LIKE ?
-                    OR size LIKE ?
-                    OR color LIKE ?
-                ORDER BY id DESC"""
+    sql = """
+        SELECT items.id, items.title
+        FROM items
+        LEFT JOIN item_classes ON items.id = item_classes.item_id
+        LEFT JOIN classes ON item_classes.title = classes.title AND item_classes.value = classes.value
+        WHERE items.title LIKE ?
+            OR items.description LIKE ?
+            OR items.size LIKE ?
+            OR items.color LIKE ?
+            OR classes.title LIKE ?
+            OR classes.value LIKE ?
+        ORDER BY items.id DESC
+    """
     like = "%" + query + "%"
-    return db.query(sql, [like, like, like, like])
+    return db.query(sql, [like, like, like, like, like, like])
 
 def add_comment(item_id, user_id, comment):
     sql = """INSERT INTO comments (item_id, user_id, comment)
