@@ -76,3 +76,18 @@ def find_items(query):
                 ORDER BY id DESC"""
     like = "%" + query + "%"
     return db.query(sql, [like, like, like, like])
+
+def add_comment(item_id, user_id, comment):
+    sql = """INSERT INTO comments (item_id, user_id, comment)
+             VALUES (?, ?, ?)"""
+    db.execute(sql, [item_id, user_id, comment])
+
+def get_comments(item_id):
+    sql = """SELECT comments.comment,
+                    users.id user_id,
+                    users.username
+             FROM comments, users
+             WHERE comments.user_id = users.id AND
+                    comments.item_id = ?"""
+    result = db.query(sql, [item_id])
+    return result if result else []
