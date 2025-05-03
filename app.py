@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask
 from flask import abort, make_response, redirect, render_template, request, session
 import config
+import db
 import items
 import users
 
@@ -101,7 +102,8 @@ def create_item():
 
     items.add_item(title, size, color, description, user_id, classes)
 
-    return redirect("/")
+    item_id = db.last_insert_id()
+    return redirect("/item/" + str(item_id))
 
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):
