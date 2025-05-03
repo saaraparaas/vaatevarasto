@@ -6,22 +6,18 @@
 </head>
 
 <body>
-  <h1>Vaatevarasto</h1>
-  {% if session.username %}
+  <h1>Vaatejemma</h1>
+
+  {% if session.user_id %}
   <p>
-    Olet kirjautunut nimellä {{ session.username }} ja id-numerosi on {{ session.user_id }}
-  </p>
-  <p>
-    <a href="/new_item">Lisää uusi vaatetieto</a>
+    Olet kirjautunut palveluun nimellä {{ session.username }}.
   </p>
   <p>
     <a href="/logout">Kirjaudu ulos</a>
   </p>
   {% else %}
   <p>
-    <a href="/login">Kirjaudu sisään</a>
-  </p>
-  <p>
+    <a href="/login">Kirjaudu sisään</a> |
     <a href="/register">Luo tunnus</a>
   </p>
   {% endif %}
@@ -30,14 +26,16 @@
 
   <p>
     <a href="/find_item">Etsi vaate</a>
+  {% if session.username %}
+    | <a href="/new_item"> Lisää uusi vaate</a>
   </p>
+  {% endif %}
 
   <ul>
     {% for item in items %}
     <li><a href="/item/{{  item.id  }}">{{ item.title }} {{ item.size }}</a></li>
     {% endfor %}
   </ul>
-
 </body>
 
 </html>
