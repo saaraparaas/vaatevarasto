@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Vaatetiedon poisto</title>
-</head>
+{% block title %}Vaatetiedon poisto{% endblock %}
 
-<body>
-  <h1>Vaatetiedon poisto</h1>
-  <h2>{{ item.title }}</h2>
-  <p>Haluatko varmasti poistaa tämän ilmoituksen?</p>
-  <form action="/remove_item/{{ item.id }}" method="post">
+{% block content %}
+<h2>{{ item.title }}</h2>
+<h3>Poista vaatetieto</h3>
+
+<p>Haluatko varmasti poistaa vaatetiedon?</p>
+<form action="/remove_item/{{ item.id }}" method="post">
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-  <input type="submit" name="remove" value="Poista ilmoitus">
+  <input type="submit" name="remove" value="Poista">
   <input type="submit" name="back" value="Palaa takaisin">
 </form>
-<p>
-  <a href="/item/{{ item.id }}">Takaisin ilmoitukseen</a>
-</p>
-
-  </form>
-</body>
-
-</html>
+{% endblock %}

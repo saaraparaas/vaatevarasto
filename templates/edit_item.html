@@ -1,48 +1,49 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Vaatetiedon muokkaus</title>
-</head>
+{% block title %}Muokkaa vaatetietoa{% endblock %}
 
-<body>
-  <h1>Vaatetiedon muokkaus</h1>
-  <form action="/update_item" method="post">
-    <p>
-        Vaate: <br />
-        <input type="text" name="title" value="{{ item.title }}" maxlength="60" required />
-    </p>
-    <p>
-        Koko: <br />
-        <input type="text" name="size" size="8" value="{{ item.size }}" maxlength="50" required /> cm
-    </p>
-    <p>
-        Väri: <br />
-        <input type="text" name="color" value="{{ item.color }}" maxlength="100" required/>
-    </p>
-    {% for class in all_classes %}
-    <p>
-        <label for="class{{ class }}">{{ class }}</a>: <br />
-        <select name="classes" id="class{{ class}}">
-          <option value="">(valitse)</option>
-        {% for option in all_classes[class] %}
-          {% if classes[class] == option %}
-          <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
-          {% else %}
-          <option value="{{ class }}:{{ option }}">{{ option }}</option>
-          {% endif %}
-        {% endfor %}
-        </select>
-    </p>
+{% block content %}
+<h2>{{ item.title }}</h2>
+<h3>Muokkaa vaatetietoa</h3>
+
+<form action="/update_item" method="post">
+  <p>
+    Vaate: <br />
+    <input type="text" name="title" value="{{ item.title }}" maxlength="60" required />
+  </p>
+  <p>
+    Koko: <br />
+    <input type="text" name="size" size="8" value="{{ item.size }}" maxlength="50" required /> cm
+  </p>
+  <p>
+    Väri: <br />
+    <input type="text" name="color" value="{{ item.color }}" maxlength="100" required/>
+  </p>
+
+  {% for class in all_classes %}
+  <p>
+    <label for="class{{ class }}">{{ class }}</a>: <br />
+    <select name="classes" id="class{{ class}}">
+      <option value="">(valitse)</option>
+    {% for option in all_classes[class] %}
+      {% if classes[class] == option %}
+      <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
+      {% else %}
+      <option value="{{ class }}:{{ option }}">{{ option }}</option>
+      {% endif %}
     {% endfor %}
-    <p>
-        Kuvaus: <br />
-        <textarea name="description" rows="4" cols="60" maxlength="1000" required>{{ item.description }}</textarea>
-    </p>
-    <input type="hidden" name="item_id" value="{{ item.id }}" />
-    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-    <input type="submit" value="Päivitä ilmoitus" />
-  </form>
-</body>
+    </select>
+  </p>
+  {% endfor %}
 
-</html>
+  <p>
+    Kuvaus: <br />
+    <textarea name="description" rows="4" cols="60" maxlength="1000" required>{{ item.description }}</textarea>
+  </p>
+
+  <input type="hidden" name="item_id" value="{{ item.id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" value="Päivitä" />
+  <input type="submit" name="back" value="Palaa takaisin">
+</form>
+{% endblock %}

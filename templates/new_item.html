@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Uusi vaate</title>
-</head>
+{% block title %}Uusi vaate{% endblock %}
 
-<body>
-  <h1>Uusi ilmoitus</h1>
-  <form action="/create_item" method="post">
-    <p>
-      Vaate: <br />
-      <input type="text" name="title" maxlength="60" required />
-    </p>
-    <p>
-      Koko: <br />
-      <input type="text" name="size" size="8" maxlength="50" required /> cm
-    </p>
-    <p>
-      Väri: <br />
-      <input type="text" name="color" maxlength="100" required />
-    </p>
-    {% for class in classes %}
-    <p>
-      <label for="class{{ class }}">{{ class }}</label>: <br />
-      <select name="classes" id="class{{ class }}">
-        <option value="">(valitse)</option>
-      {% for option in classes[class] %}
-        <option value="{{ class }}:{{ option }}">{{ option }}</option>
-      {% endfor %}
-      </select>
-    </p>
+{% block content %}
+<h2>Uusi vaate</h2>
+
+<form action="/create_item" method="post">
+  <p>
+    Vaate: <br />
+    <input type="text" name="title" maxlength="60" required />
+  </p>
+  <p>
+    Koko: <br />
+    <input type="text" name="size" size="8" maxlength="50" required /> cm
+  </p>
+  <p>
+    Väri: <br />
+    <input type="text" name="color" maxlength="100" required />
+  </p>
+
+  {% for class in classes %}
+  <p>
+    <label for="class{{ class }}">{{ class }}</label>: <br />
+    <select name="classes" id="class{{ class }}">
+      <option value="">(valitse)</option>
+    {% for option in classes[class] %}
+      <option value="{{ class }}:{{ option }}">{{ option }}</option>
     {% endfor %}
-    <p>
-      Kuvaus: <br />
-      <textarea name="description" rows="4" cols="60" maxlength="1000" required ></textarea>
-    </p>
-    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-    <input type="submit" value="Luo ilmoitus" />
-  </form>
-</body>
+    </select>
+  </p>
+  {% endfor %}
 
-</html>
+  <p>
+    Kuvaus: <br />
+    <textarea name="description" rows="4" cols="60" maxlength="1000" required ></textarea>
+  </p>
+
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" value="Luo ilmoitus" />
+</form>
+{% endblock %}
