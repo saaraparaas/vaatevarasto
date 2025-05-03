@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-    <title>Ilmoituksen kuvat</title>
+{% block title %}Ilmoituksen kuvat{% endblock %}
 
+{% block content %}
 <h2>{{ item.title }}</h2>
 <h3>Ilmoituksen kuvat</h3>
 
 <p>
-  Ilmoituksessa on {{ images | count }} kuvaa.
+  Vaatetiedolla on {{ images | count }} kuvaa.
 </p>
 
 <form action="/remove_images" method="post">
@@ -33,8 +32,6 @@
   <input type="hidden" name="item_id" value="{{ item.id }}">
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" value="Lähetä" />
+  <input type="submit" name="back" value="Palaa takaisin">
 </form>
-
-<p>
-  <a href="/item/{{ item.id }}">Takaisin ilmoitukseen</a>
-</p>
+{% endblock %}

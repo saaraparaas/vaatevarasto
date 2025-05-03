@@ -141,6 +141,10 @@ def add_image():
     require_login()
     check_csrf()
 
+    if "back" in request.form:
+        item_id = request.form.get("item_id")
+        return redirect("/item/" + str(item_id))
+
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
     if not item:
@@ -182,6 +186,10 @@ def remove_images():
 def update_item():
     require_login()
     check_csrf()
+
+    if "back" in request.form:
+        item_id = request.form.get("item_id")
+        return redirect("/item/" + str(item_id))
 
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
