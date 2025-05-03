@@ -7,16 +7,16 @@
 
 <form action="/create_item" method="post">
   <p>
-    Vaate: <br />
-    <input type="text" name="title" maxlength="60" required />
+    <label for="title">Vaate:</label> <br />
+    <input type="text" name="title" id="title" maxlength="60" required />
   </p>
   <p>
-    Koko: <br />
-    <input type="text" name="size" size="8" maxlength="50" required /> cm
+    <label for="size">Koko:</label> <br />
+    <input type="text" name="size" id="size" size="8" maxlength="50" required /> cm
   </p>
   <p>
-    Väri: <br />
-    <input type="text" name="color" maxlength="100" required />
+    <label for="color">Väri:</label> <br />
+    <input type="text" name="color" id="color" maxlength="100" required />
   </p>
 
   {% for class in classes %}
@@ -32,8 +32,8 @@
   {% endfor %}
 
   <p>
-    Kuvaus: <br />
-    <textarea name="description" rows="4" cols="60" maxlength="1000" required ></textarea>
+    <label for="description">Kuvaus:</label> <br />
+    <textarea name="description" id="description" rows="4" cols="60" maxlength="1000" required ></textarea>
   </p>
 
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
