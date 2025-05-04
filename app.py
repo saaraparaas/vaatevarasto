@@ -104,7 +104,7 @@ def create_item():
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
-            class_title, class_value = entry.split(":")
+            class_title, class_value = entry.split(":", 1)
             if class_title not in all_classes:
                 abort(403)
             if class_value not in all_classes[class_title]:
