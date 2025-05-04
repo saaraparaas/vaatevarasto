@@ -114,7 +114,7 @@ def create_item():
     items.add_item(title, size, color, description, user_id, classes)
 
     item_id = db.last_insert_id()
-    return redirect("/item/" + str(item_id))
+    return redirect("/")
 
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):

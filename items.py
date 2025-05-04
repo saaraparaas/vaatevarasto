@@ -15,13 +15,14 @@ def get_all_classes():
 def add_item(title, size, color, description, user_id, classes):
     sql = """INSERT INTO items (title, size, color, description, user_id)
              VALUES (?, ?, ?, ?, ?)"""
+
     db.execute(sql, [title, size, color, description, user_id])
 
     item_id = db.last_insert_id()
 
     sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
     for class_title, class_value in classes:
-        db.execute(sql, [item_id, class_title, class_value])
+       db.execute(sql, [item_id, class_title, class_value])
 
 def get_images(item_id):
     sql = "SELECT id FROM images WHERE item_id = ?"
