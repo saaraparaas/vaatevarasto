@@ -7,26 +7,27 @@
 </head>
 
 <body>
-  <h1>Vaatejemma</h1>
+  <div class="block">
+    <h1>Vaatejemma</h1>
 
-  {% if session.user_id %}
-  <p>
-    Olet kirjautunut palveluun nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>.
-  </p>
-  {% endif %}
+    {% if session.user_id %}
+    <p>
+      Olet kirjautunut palveluun nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>.
+    </p>
+    {% endif %}
 
-  <p>
-    <a href="/">Etusivu</a> |
-    <a href="/find_item">Etsi vaate</a> |
-  {% if session.user_id %}
-    <a href="/new_item">Lisää uusi vaate</a> |
-    <a href="/logout">Kirjaudu ulos</a>
-  {% else %}
-    <a href="/login">Kirjaudu sisään</a> |
-    <a href="/register">Luo tunnus</a>
-  {% endif %}
-  </p>
-
+    <p>
+      <a href="/">Etusivu</a> |
+      <a href="/find_item">Etsi vaate</a> |
+    {% if session.user_id %}
+      <a href="/new_item">Lisää uusi vaate</a> |
+      <a href="/logout">Kirjaudu ulos</a>
+    {% else %}
+      <a href="/login">Kirjaudu sisään</a> |
+      <a href="/register">Luo tunnus</a>
+    {% endif %}
+    </p>
+  </div>
 
   {% for message in get_flashed_messages() %}
   <div class="info">
