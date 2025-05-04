@@ -294,7 +294,7 @@ def create():
         flash("VIRHE: tunnus on jo varattu")
         return redirect("/register")
 
-    return redirect("/")
+    return redirect("/login")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
